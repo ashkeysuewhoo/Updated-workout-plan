@@ -1,1 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Glow-Up Plan 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush:#fce4ec; --rose:#f48fb1; --hot:#e91e8c; --lavender:#f3e5f5;
+    --lilac:#ce93d8; --purple:#9c27b0; --cream:#fffaf7; --peach:#ffe0b2;
+    --text:#4a2040; --muted:#b07090; --shadow:rgba(233,30,140,0.12);
+    --mint:#e8f5e9; --sage:#66bb6a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--cream);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+  .petal-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .petal{position:absolute;font-size:22px;opacity:0.15;animation:floatPetal linear infinite;}
+  .petal:nth-child(1){left:5%;animation-duration:14s;animation-delay:0s;font-size:18px;}
+  .petal:nth-child(2){left:15%;animation-duration:18s;animation-delay:2s;font-size:26px;}
+  .petal:nth-child(3){left:27%;animation-duration:12s;animation-delay:5s;font-size:16px;}
+  .petal:nth-child(4){left:40%;animation-duration:20s;animation-delay:1s;font-size:22px;}
+  .petal:nth-child(5){left:55%;animation-duration:15s;animation-delay:7s;font-size:14px;}
+  .petal:nth-child(6){left:68%;animation-duration:17s;animation-delay:3s;font-size:28px;}
+  .petal:nth-child(7){left:80%;animation-duration:11s;animation-delay:9s;font-size:20px;}
+  .petal:nth-child(8){left:90%;animation-duration:19s;animation-delay:4s;font-size:16px;}
+  .petal:nth-child(9){left:48%;animation-duration:16s;animation-delay:11s;font-size:24px;}
+  .petal:nth-child(10){left:72%;animation-duration:13s;animation-delay:6s;font-size:18px;}
+  @keyframes floatPetal{0%{transform:translateY(110vh) rotate(0deg);opacity:0;}10%{opacity:0.15;}90%{opacity:0.15;}100%{transform:translateY(-10vh) rotate(360deg);opacity:0;}}
+
+  /* HERO */
+  .hero{position:relative;z-index:1;text-align:center;padding:52px 24px 40px;background:linear-gradient(160deg,#fce4ec 0%,#f3e5f5 50%,#ffe0b2 100%);border-bottom:3px dashed var(--rose);}
+  .hero-flowers{font-size:32px;margin-bottom:10px;letter-spacing:6px;animation:wiggle 3s ease-in-out infinite;}
+  @keyframes wiggle{0%,100%{transform:rotate(-2deg);}50%{transform:rotate(2deg);}}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,9vw,74px);font-weight:700;color:var(--hot);line-height:1;margin-bottom:4px;text-shadow:3px 3px 0 rgba(233,30,140,0.15);}
+  .hero-sub-title{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(15px,4vw,24px);color:var(--purple);margin-bottom:14px;}
+
+  /* WEIGHT DISPLAY in hero */
+  .hero-weight-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+  .hero-weight-display{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--hot);}
+  .hero-weight-sub{font-size:12px;color:var(--muted);font-weight:700;}
+  .btn-edit-weight{background:white;border:2px solid var(--rose);color:var(--hot);font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;padding:6px 14px;border-radius:50px;cursor:pointer;transition:all .2s;}
+  .btn-edit-weight:hover{background:var(--blush);}
+
+  .stat-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .stat-pill{background:white;border:2px solid var(--rose);border-radius:50px;padding:9px 18px;text-align:center;box-shadow:0 4px 14px var(--shadow);}
+  .stat-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--hot);line-height:1;}
+  .stat-label{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:2px;}
+
+  /* TABS */
+  .tab-nav{position:relative;z-index:1;display:flex;justify-content:center;gap:8px;padding:20px 24px 0;flex-wrap:wrap;}
+  .tab-btn{background:white;border:2px solid var(--rose);color:var(--muted);font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;padding:9px 18px;border-radius:50px;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px var(--shadow);}
+  .tab-btn:hover{background:var(--blush);color:var(--hot);transform:translateY(-2px);}
+  .tab-btn.active{background:linear-gradient(135deg,var(--hot),var(--purple));border-color:transparent;color:white;box-shadow:0 4px 16px rgba(233,30,140,.35);transform:translateY(-2px);}
+
+  .container{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:24px 18px 80px;}
+  .tab-panel{display:none;} .tab-panel.active{display:block;}
+
+  .section-header{text-align:center;margin-bottom:20px;}
+  .section-title{font-family:'Playfair Display',serif;font-size:26px;color:var(--hot);font-weight:700;}
+  .section-title .emoji{margin:0 5px;}
+  .section-desc{font-size:13px;color:var(--muted);margin-top:4px;}
+
+  /* WEEK GRID */
+  .week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-bottom:22px;}
+  .day-pill{background:white;border:2px solid #f8c8db;border-radius:14px;padding:10px 4px;text-align:center;cursor:pointer;transition:all .2s;min-height:68px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;box-shadow:0 2px 8px var(--shadow);}
+  .day-pill:hover:not(.rest){border-color:var(--hot);transform:translateY(-3px);box-shadow:0 6px 20px var(--shadow);}
+  .day-pill.active{background:linear-gradient(135deg,#fce4ec,#f3e5f5);border-color:var(--hot);transform:translateY(-3px);box-shadow:0 6px 20px var(--shadow);}
+  .day-pill.rest{opacity:.45;cursor:default;}
+  .day-pill.cardio-day{border-color:#a5d6a7;}
+  .day-pill.cardio-day.active{background:linear-gradient(135deg,#e8f5e9,#f3e5f5);border-color:var(--sage);}
+  .day-name{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+  .day-emoji{font-size:17px;}
+  .day-type{font-size:9px;font-weight:700;color:var(--hot);text-transform:uppercase;letter-spacing:.05em;}
+  .day-pill.cardio-day .day-type{color:var(--sage);}
+  .day-pill.rest .day-type{color:var(--muted);}
+
+  /* WORKOUT CARD */
+  .workout-card{background:white;border:2px solid #f8c8db;border-radius:18px;overflow:hidden;box-shadow:0 6px 24px var(--shadow);margin-bottom:20px;}
+  .workout-card.cardio-card{border-color:#a5d6a7;}
+  .workout-card-header{padding:18px 22px 14px;background:linear-gradient(135deg,var(--blush),var(--lavender));border-bottom:2px dashed #f8c8db;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .workout-card.cardio-card .workout-card-header{background:linear-gradient(135deg,#e8f5e9,#f3e5f5);border-bottom-color:#a5d6a7;}
+  .workout-card-title{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--hot);}
+  .workout-card.cardio-card .workout-card-title{color:#388e3c;}
+  .workout-card-sub{font-size:12px;color:var(--muted);margin-top:2px;font-weight:600;}
+
+  .badge{font-size:11px;font-weight:800;padding:5px 13px;border-radius:50px;letter-spacing:.04em;}
+  .badge-pink{background:#fce4ec;color:var(--hot);border:1.5px solid var(--rose);}
+  .badge-purple{background:#f3e5f5;color:var(--purple);border:1.5px solid var(--lilac);}
+  .badge-peach{background:#ffe0b2;color:#e65100;border:1.5px solid #ffcc80;}
+  .badge-green{background:#e8f5e9;color:#388e3c;border:1.5px solid #a5d6a7;}
+
+  /* EXERCISE TABLE */
+  .col-header{display:grid;grid-template-columns:34px 1fr 68px 88px 78px;gap:10px;padding:9px 20px;background:#fdf0f5;border-bottom:1.5px solid #f8c8db;}
+  .workout-card.cardio-card .col-header{background:#f1f8e9;border-bottom-color:#a5d6a7;}
+  .col-h{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center;}
+  .col-h:nth-child(2){text-align:left;}
+
+  .exercise-row{display:grid;grid-template-columns:34px 1fr 68px 88px 78px;gap:10px;align-items:center;padding:12px 20px;border-bottom:1.5px solid #fce4ec;transition:background .15s;}
+  .exercise-row:last-child{border-bottom:none;}
+  .exercise-row:hover{background:#fff5f8;}
+  .workout-card.cardio-card .exercise-row{border-bottom-color:#e8f5e9;}
+  .workout-card.cardio-card .exercise-row:hover{background:#f9fef9;}
+
+  .ex-check{width:22px;height:22px;border:2px solid var(--rose);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;font-size:13px;background:white;}
+  .ex-check:hover{border-color:var(--hot);background:var(--blush);}
+  .ex-check.done{background:linear-gradient(135deg,var(--rose),var(--lilac));border-color:transparent;box-shadow:0 2px 8px var(--shadow);}
+  .ex-check.done::after{content:'✿';color:white;}
+  .workout-card.cardio-card .ex-check{border-color:#a5d6a7;}
+  .workout-card.cardio-card .ex-check:hover{background:#e8f5e9;}
+  .workout-card.cardio-card .ex-check.done{background:linear-gradient(135deg,#81c784,#66bb6a);}
+
+  .ex-name{font-size:13px;font-weight:700;color:var(--text);}
+  .ex-muscle{font-size:11px;color:var(--muted);margin-top:2px;font-weight:600;}
+  .ex-sets,.ex-reps,.ex-rest{font-size:13px;font-weight:700;color:var(--purple);text-align:center;}
+  .ex-rest{color:var(--muted);font-size:11px;}
+
+  .progress-wrap{padding:12px 20px;background:#fdf0f5;border-top:1.5px dashed #f8c8db;display:flex;align-items:center;gap:12px;}
+  .workout-card.cardio-card .progress-wrap{background:#f1f8e9;border-top-color:#a5d6a7;}
+  .progress-bar-bg{flex:1;height:8px;background:#f8c8db;border-radius:50px;overflow:hidden;}
+  .workout-card.cardio-card .progress-bar-bg{background:#c8e6c9;}
+  .progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--lilac));border-radius:50px;transition:width .4s cubic-bezier(.34,1.56,.64,1);width:0%;}
+  .workout-card.cardio-card .progress-bar-fill{background:linear-gradient(90deg,#81c784,#66bb6a);}
+  .progress-label{font-size:12px;font-weight:800;color:var(--hot);white-space:nowrap;}
+  .workout-card.cardio-card .progress-label{color:#388e3c;}
+
+  /* CARDIO ZONE BADGE */
+  .cardio-zone-row{display:flex;gap:8px;flex-wrap:wrap;padding:12px 20px;border-bottom:1.5px solid #e8f5e9;background:#f9fef9;}
+  .zone-tag{font-size:11px;font-weight:800;padding:4px 12px;border-radius:50px;border:1.5px solid;}
+  .zone-fat{background:#fff8e1;color:#f57f17;border-color:#ffe082;}
+  .zone-cardio{background:#fce4ec;color:#c62828;border-color:#ef9a9a;}
+  .zone-hiit{background:#ede7f6;color:#6a1b9a;border-color:#ce93d8;}
+
+  /* INFO GRID */
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+  @media(max-width:540px){.info-grid{grid-template-columns:1fr;}}
+  .info-card{background:white;border:2px solid #f8c8db;border-radius:14px;padding:16px 18px;box-shadow:0 3px 12px var(--shadow);}
+  .info-card-title{font-size:11px;font-weight:800;color:var(--hot);text-transform:uppercase;letter-spacing:.1em;margin-bottom:9px;}
+  .info-card ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+  .info-card li{font-size:12px;color:var(--muted);padding-left:18px;position:relative;line-height:1.5;font-weight:600;}
+  .info-card li::before{content:'🌸';position:absolute;left:0;font-size:11px;top:1px;}
+
+  /* ── NUTRITION TAB ── */
+  /* Weight input card */
+  .weight-input-card{background:white;border:2px solid var(--rose);border-radius:18px;padding:20px 22px;margin-bottom:20px;box-shadow:0 4px 16px var(--shadow);}
+  .weight-input-card h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--hot);margin-bottom:4px;}
+  .weight-input-card p{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:14px;}
+  .weight-input-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;}
+  .weight-input-row .form-group{flex:1;min-width:120px;}
+  .weight-calc-result{margin-top:14px;background:linear-gradient(135deg,var(--blush),var(--lavender));border-radius:12px;padding:14px 16px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;}
+  .calc-item{text-align:center;}
+  .calc-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--hot);line-height:1;}
+  .calc-label{font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-top:2px;}
+
+  /* Retatrutide banner */
+  .reta-banner{background:linear-gradient(135deg,#f3e5f5,#fce4ec);border:2px solid var(--lilac);border-radius:14px;padding:14px 18px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start;}
+  .reta-icon{font-size:24px;flex-shrink:0;}
+  .reta-title{font-size:13px;font-weight:800;color:var(--purple);margin-bottom:4px;}
+  .reta-body{font-size:12px;color:var(--muted);line-height:1.6;font-weight:600;}
+
+  /* Macro display */
+  .macro-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
+  @media(max-width:500px){.macro-row{grid-template-columns:repeat(2,1fr);}}
+  .macro-card{background:white;border:2px solid #f8c8db;border-radius:16px;padding:16px 10px;text-align:center;box-shadow:0 4px 14px var(--shadow);}
+  .macro-card .top-emoji{font-size:24px;margin-bottom:6px;display:block;}
+  .macro-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--hot);line-height:1;}
+  .macro-unit{font-size:12px;color:var(--muted);}
+  .macro-name{font-size:10px;font-weight:800;color:var(--purple);margin-top:4px;text-transform:uppercase;letter-spacing:.08em;}
+
+  /* Totals bar */
+  .totals-bar{background:linear-gradient(135deg,#fce4ec,#f3e5f5);border:2px solid var(--rose);border-radius:14px;padding:14px 18px;margin-bottom:18px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;}
+  .totals-bar-title{font-size:12px;font-weight:800;color:var(--hot);text-transform:uppercase;letter-spacing:.08em;}
+  .totals-nums{display:flex;gap:16px;flex-wrap:wrap;}
+  .total-item{text-align:center;}
+  .total-val{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--hot);line-height:1;}
+  .total-lbl{font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;}
+  .totals-status{font-size:12px;font-weight:700;}
+  .status-ok{color:#388e3c;} .status-low{color:#e65100;} .status-high{color:var(--hot);}
+
+  /* Editable meal cards */
+  .meal-card{background:white;border:2px solid #f8c8db;border-radius:16px;padding:0;margin-bottom:12px;box-shadow:0 3px 12px var(--shadow);overflow:hidden;}
+  .meal-card-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 10px;border-bottom:1.5px dashed #f8c8db;cursor:pointer;user-select:none;}
+  .meal-header-left{display:flex;align-items:center;gap:10px;}
+  .meal-emoji-big{font-size:24px;}
+  .meal-title{font-size:11px;font-weight:800;color:var(--hot);text-transform:uppercase;letter-spacing:.1em;}
+  .meal-quick-macros{font-size:11px;color:var(--muted);font-weight:700;margin-top:2px;}
+  .meal-toggle-btn{background:none;border:none;font-size:18px;cursor:pointer;color:var(--muted);transition:transform .2s;}
+  .meal-toggle-btn.open{transform:rotate(180deg);}
+  .meal-body{padding:14px 18px 16px;}
+
+  /* Editable food items */
+  .food-items-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+  .food-item-row{display:grid;grid-template-columns:1fr 60px 60px 60px 60px 28px;gap:6px;align-items:center;}
+  .food-item-row input,.food-item-row select{background:#fff5f8;border:1.5px solid #f8c8db;color:var(--text);font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:7px 8px;border-radius:9px;outline:none;transition:border-color .15s;width:100%;}
+  .food-item-row input:focus,.food-item-row select:focus{border-color:var(--hot);}
+  .food-item-row input[type=number]{text-align:center;}
+  .food-col-label{font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center;}
+  .food-col-label:first-child{text-align:left;}
+  .btn-remove-food{background:none;border:none;font-size:16px;cursor:pointer;color:var(--rose);opacity:.6;transition:opacity .15s;line-height:1;}
+  .btn-remove-food:hover{opacity:1;}
+  .btn-add-food{background:var(--blush);border:1.5px dashed var(--rose);color:var(--hot);font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;padding:7px 16px;border-radius:50px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:5px;}
+  .btn-add-food:hover{background:var(--rose);color:white;}
+
+  /* PROGRESS LOG */
+  .log-form{background:white;border:2px solid #f8c8db;border-radius:18px;padding:20px;margin-bottom:18px;box-shadow:0 4px 16px var(--shadow);display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;}
+  .form-group{display:flex;flex-direction:column;gap:5px;flex:1;min-width:105px;}
+  .form-group label{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
+  .form-group input,.form-group select{background:#fff5f8;border:2px solid #f8c8db;color:var(--text);font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;padding:9px 11px;border-radius:11px;outline:none;transition:border-color .15s;}
+  .form-group input:focus,.form-group select:focus{border-color:var(--hot);}
+  .btn-log{background:linear-gradient(135deg,var(--hot),var(--purple));color:white;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:11px 20px;border-radius:50px;border:none;cursor:pointer;transition:opacity .15s,transform .15s;white-space:nowrap;box-shadow:0 4px 14px rgba(233,30,140,.3);}
+  .btn-log:hover{opacity:.9;transform:translateY(-2px);}
+
+  .log-entries{background:white;border:2px solid #f8c8db;border-radius:18px;overflow:hidden;box-shadow:0 4px 16px var(--shadow);}
+  .log-entry{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;border-bottom:1.5px solid #fce4ec;font-size:14px;flex-wrap:wrap;}
+  .log-entry:last-child{border-bottom:none;}
+  .log-entry-date{font-size:12px;font-weight:700;color:var(--muted);}
+  .log-entry-weight{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--hot);}
+  .log-entry-note{font-size:11px;color:var(--muted);font-weight:600;}
+  .log-entry-change{font-size:12px;font-weight:800;padding:3px 10px;border-radius:50px;}
+  .change-down{background:#e8f5e9;color:#388e3c;}
+  .change-up{background:#fce4ec;color:var(--hot);}
+  .log-entry-del{background:none;border:none;cursor:pointer;font-size:15px;color:var(--rose);opacity:.5;transition:opacity .15s;}
+  .log-entry-del:hover{opacity:1;}
+
+  .empty-state{padding:48px 24px;text-align:center;color:var(--muted);font-size:14px;font-weight:700;}
+  .empty-state .big{font-size:38px;display:block;margin-bottom:10px;}
+
+  /* TIPS */
+  .tip-card{background:white;border:2px solid #f8c8db;border-radius:16px;padding:16px 18px;margin-bottom:10px;box-shadow:0 3px 12px var(--shadow);display:flex;gap:12px;align-items:flex-start;}
+  .tip-emoji{font-size:24px;flex-shrink:0;}
+  .tip-title{font-size:13px;font-weight:800;color:var(--hot);margin-bottom:4px;}
+  .tip-body{font-size:12px;color:var(--muted);line-height:1.6;font-weight:600;}
+
+  @media(max-width:600px){
+    .exercise-row,.col-header{grid-template-columns:30px 1fr 56px 76px;}
+    .exercise-row>*:nth-child(5),.col-header>*:nth-child(5){display:none;}
+    .week-grid{grid-template-columns:repeat(4,1fr);}
+    .food-item-row{grid-template-columns:1fr 52px 52px 52px 28px;}
+    .food-item-row>*:nth-child(5){display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="petal-bg">
+  <span class="petal">🌸</span><span class="petal">🌺</span><span class="petal">🌷</span>
+  <span class="petal">✿</span><span class="petal">🌸</span><span class="petal">💐</span>
+  <span class="petal">🌹</span><span class="petal">🌸</span><span class="petal">🌺</span>
+  <span class="petal">🌷</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-flowers">🌸 🌺 🌷 🌸 🌺</div>
+  <h1>My Glow-Up</h1>
+  <div class="hero-sub-title">body recomp plan ✨</div>
+  <div class="hero-weight-row">
+    <div>
+      <div class="hero-weight-display" id="hero-weight-display">— lbs</div>
+      <div class="hero-weight-sub">current weight · updates nutrition automatically 💕</div>
+    </div>
+    <button class="btn-edit-weight" onclick="switchTab('progress', document.querySelectorAll(\'.tab-btn\')[2])">Update Weight 📈</button>
+  </div>
+  <div class="stat-row">
+    <div class="stat-pill"><div class="stat-num">4</div><div class="stat-label">Gym Days</div></div>
+    <div class="stat-pill"><div class="stat-num">3</div><div class="stat-label">Cardio Days</div></div>
+    <div class="stat-pill"><div class="stat-num">12</div><div class="stat-label">Weeks 🌟</div></div>
+    <div class="stat-pill"><div class="stat-num" id="hero-calories">~2000</div><div class="stat-label">kcal Target</div></div>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('schedule',this)">🏋️ Schedule</button>
+  <button class="tab-btn" onclick="switchTab('nutrition',this)">🥗 Nutrition</button>
+  <button class="tab-btn" onclick="switchTab('progress',this)">📈 Progress</button>
+  <button class="tab-btn" onclick="switchTab('tips',this)">💡 Tips</button>
+</div>
+
+<div class="container">
+
+<!-- ══════════════════════════════════════════
+     SCHEDULE TAB
+══════════════════════════════════════════ -->
+<div id="tab-schedule" class="tab-panel active">
+  <div class="section-header">
+    <div class="section-title"><span class="emoji">🗓️</span>Your Week<span class="emoji">🌸</span></div>
+    <div class="section-desc">Tap any day to see your workout · green = cardio days 💚</div>
+  </div>
+
+  <div class="week-grid">
+    <div class="day-pill active" onclick="selectDay(this,'day-mon')">
+      <span class="day-name">Mon</span><span class="day-emoji">💪</span><span class="day-type">Push</span>
+    </div>
+    <div class="day-pill cardio-day" onclick="selectDay(this,'day-tue')">
+      <span class="day-name">Tue</span><span class="day-emoji">🏃‍♀️</span><span class="day-type">Cardio</span>
+    </div>
+    <div class="day-pill" onclick="selectDay(this,'day-wed')">
+      <span class="day-name">Wed</span><span class="day-emoji">🌺</span><span class="day-type">Pull</span>
+    </div>
+    <div class="day-pill rest">
+      <span class="day-name">Thu</span><span class="day-emoji">🛁</span><span class="day-type">Rest</span>
+    </div>
+    <div class="day-pill" onclick="selectDay(this,'day-fri')">
+      <span class="day-name">Fri</span><span class="day-emoji">🦵</span><span class="day-type">Legs</span>
+    </div>
+    <div class="day-pill" onclick="selectDay(this,'day-sat')">
+      <span class="day-name">Sat</span><span class="day-emoji">✨</span><span class="day-type">Full</span>
+    </div>
+    <div class="day-pill cardio-day" onclick="selectDay(this,'day-sun')">
+      <span class="day-name">Sun</span><span class="day-emoji">🚴‍♀️</span><span class="day-type">Cardio</span>
+    </div>
+  </div>
+
+  <!-- MONDAY — PUSH -->
+  <div id="day-mon" class="workout-card">
+    <div class="workout-card-header">
+      <div><div class="workout-card-title">💪 Monday — Push Day</div><div class="workout-card-sub">Chest · Shoulders · Triceps</div></div>
+      <span class="badge badge-pink">~55 min 🕐</span>
+    </div>
+    <div class="col-header"><div class="col-h"></div><div class="col-h">Exercise</div><div class="col-h">Sets</div><div class="col-h">Reps</div><div class="col-h">Rest</div></div>
+    <div class="exercise-list" id="list-mon"></div>
+    <div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-mon"></div></div><div class="progress-label" id="prog-label-mon">0 / 6 done 🌸</div></div>
+  </div>
+
+  <!-- TUESDAY — CARDIO -->
+  <div id="day-tue" class="workout-card cardio-card" style="display:none;">
+    <div class="workout-card-header">
+      <div><div class="workout-card-title">🏃‍♀️ Tuesday — Cardio</div><div class="workout-card-sub">Fat Burn · Endurance · Heart Health</div></div>
+      <span class="badge badge-green">~40 min 🕐</span>
+    </div>
+    <div class="cardio-zone-row">
+      <span class="zone-tag zone-fat">🔥 Fat Burn Zone: 60–70% max HR</span>
+      <span class="zone-tag zone-cardio">❤️ Cardio Zone: 70–85% max HR</span>
+      <span class="zone-tag zone-hiit">⚡ HIIT: 85–95% max HR</span>
+    </div>
+    <div class="col-header"><div class="col-h"></div><div class="col-h">Activity</div><div class="col-h">Time</div><div class="col-h">Intensity</div><div class="col-h">Zone</div></div>
+    <div class="exercise-list" id="list-tue"></div>
+    <div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-tue"></div></div><div class="progress-label" id="prog-label-tue">0 / 4 done 💚</div></div>
+  </div>
+
+  <!-- WEDNESDAY — PULL -->
+  <div id="day-wed" class="workout-card" style="display:none;">
+    <div class="workout-card-header">
+      <div><div class="workout-card-title">🌺 Wednesday — Pull Day</div><div class="workout-card-sub">Back · Biceps · Rear Delts</div></div>
+      <span class="badge badge-purple">~55 min 🕐</span>
+    </div>
+    <div class="col-header"><div class="col-h"></div><div class="col-h">Exercise</div><div class="col-h">Sets</div><div class="col-h">Reps</div><div class="col-h">Rest</div></div>
+    <div class="exercise-list" id="list-wed"></div>
+    <div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-wed"></div></div><div class="progress-label" id="prog-label-wed">0 / 6 done 🌸</div></div>
+  </div>
+
+  <!-- FRIDAY — LEGS -->
+  <div id="day-fri" class="workout-card" style="display:none;">
+    <div class="workout-card-header">
+      <div><div class="workout-card-title">🦵 Friday — Leg Day</div><div class="workout-card-sub">Quads · Hamstrings · Glutes · Calves</div></div>
+      <span class="badge badge-peach">~60 min 🕐</span>
+    </div>
+    <div class="col-header"><div class="col-h"></div><div class="col-h">Exercise</div><div class="col-h">Sets</div><div class="col-h">Reps</div><div class="col-h">Rest</div></div>
+    <div class="exercise-list" id="list-fri"></div>
+    <div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-fri"></div></div><div class="progress-label" id="prog-label-fri">0 / 6 done 🌸</div></div>
+  </div>
+
+  <!-- SATURDAY — FULL BODY -->
+  <div id="day-sat" class="workout-card" style="display:none;">
+    <div class="workout-card-header">
+      <div><div class="workout-card-title">✨ Saturday — Full Body + Core</div><div class="workout-card-sub">Compounds · Core · Cardio Finisher</div></div>
+      <span class="badge badge-pink">~65 min 🕐</span>
+    </div>
+    <div class="col-header"><div class="col-h"></div><div class="col-h">Exercise</div><div class="col-h">Sets</div><div class="col-h">Reps</div><div class="col-h">Rest</div></div>
+    <div class="exercise-list" id="list-sat"></div>
+    <div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-sat"></div></div><div class="progress-label" id="prog-label-sat">0 / 7 done 🌸</div></div>
+  </div>
+
+  <!-- SUNDAY — CARDIO -->
+  <div id="day-sun" class="workout-card cardio-card" style="display:none;">
+    <div class="workout-card-header">
+      <div><div class="workout-card-title">🚴‍♀️ Sunday — Active Recovery Cardio</div><div class="workout-card-sub">Low intensity · Feel-good movement 💕</div></div>
+      <span class="badge badge-green">~45 min 🕐</span>
+    </div>
+    <div class="cardio-zone-row">
+      <span class="zone-tag zone-fat">🌿 Keep it easy — fat burn zone only today</span>
+    </div>
+    <div class="col-header"><div class="col-h"></div><div class="col-h">Activity</div><div class="col-h">Time</div><div class="col-h">Intensity</div><div class="col-h">Zone</div></div>
+    <div class="exercise-list" id="list-sun"></div>
+    <div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-sun"></div></div><div class="progress-label" id="prog-label-sun">0 / 3 done 💚</div></div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-card-title">🌞 Warm-up every session</div>
+      <ul><li>5 min light cardio (bike or treadmill)</li><li>Arm circles, leg swings, hip openers</li><li>2 warm-up sets on your first exercise</li></ul>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">🏃‍♀️ Cardio tips</div>
+      <ul><li>Fasted morning cardio maximizes fat burn with retatrutide</li><li>Stay hydrated — GLP-1s can blunt thirst</li><li>Heart rate monitor highly recommended</li></ul>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">📈 Progressive Overload</div>
+      <ul><li>Add 2.5–5 lbs when you hit top of rep range</li><li>Write down your working weights each session</li><li>Form first, weight second — always!</li></ul>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">💫 Recomp Reminder</div>
+      <ul><li>Retatrutide = less hunger, so track protein carefully</li><li>Don't let appetite suppression cause under-eating protein</li><li>Results are slower but they STICK!</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     NUTRITION TAB
+══════════════════════════════════════════ -->
+<div id="tab-nutrition" class="tab-panel">
+
+  <div class="section-header">
+    <div class="section-title"><span class="emoji">🥗</span>Smart Nutrition<span class="emoji">🌷</span></div>
+    <div class="section-desc">Your targets auto-update as your weight changes 💕</div>
+  </div>
+
+  <!-- WEIGHT INPUT -->
+  <div class="weight-input-card">
+    <h3>⚖️ Your Current Weight</h3>
+    <p>Enter your weight to calculate personalised calorie & protein targets for recomp + retatrutide.</p>
+    <div class="weight-input-row">
+      <div class="form-group">
+        <label>Weight (lbs)</label>
+        <input type="number" id="nutr-weight" placeholder="e.g. 175" step="0.5" oninput="recalcNutrition()">
+      </div>
+      <div class="form-group">
+        <label>Activity Level</label>
+        <select id="nutr-activity" onchange="recalcNutrition()">
+          <option value="1.375">Lightly active (1–2 days/wk)</option>
+          <option value="1.55" selected>Moderately active (3–4 days/wk)</option>
+          <option value="1.725">Very active (5–6 days/wk)</option>
+        </select>
+      </div>
+    </div>
+    <div class="weight-calc-result" id="calc-result" style="display:none;">
+      <div class="calc-item"><div class="calc-num" id="calc-kcal">—</div><div class="calc-label">🔥 Calories</div></div>
+      <div class="calc-item"><div class="calc-num" id="calc-prot">—</div><div class="calc-label">🥩 Protein g</div></div>
+      <div class="calc-item"><div class="calc-num" id="calc-carb">—</div><div class="calc-label">🍚 Carbs g</div></div>
+      <div class="calc-item"><div class="calc-num" id="calc-fat">—</div><div class="calc-label">🥑 Fat g</div></div>
+      <div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;flex-basis:100%;" id="calc-note"></div>
+    </div>
+  </div>
+
+  <!-- RETATRUTIDE BANNER -->
+  <div class="reta-banner">
+    <div class="reta-icon">💊</div>
+    <div>
+      <div class="reta-title">Retatrutide (GLP-1/GIP/glucagon triple agonist) adjustments active</div>
+      <div class="reta-body">Your calorie target is reduced by ~15% to account for appetite suppression and enhanced fat oxidation. Protein target is <em>raised</em> to 0.85g/lb to protect muscle during accelerated fat loss. Prioritize protein-dense foods first at each meal — your appetite will fill up fast. Small, frequent meals may feel easier than large ones. Stay on top of hydration 💧</div>
+    </div>
+  </div>
+
+  <!-- LIVE MACRO TARGETS -->
+  <div class="macro-row">
+    <div class="macro-card"><span class="top-emoji">🔥</span><div class="macro-num" id="m-kcal">~1900</div><div class="macro-unit">kcal / day</div><div class="macro-name">Calories</div></div>
+    <div class="macro-card"><span class="top-emoji">🥩</span><div class="macro-num" id="m-prot">~150<span style="font-size:16px">g</span></div><div class="macro-unit">&nbsp;</div><div class="macro-name">Protein</div></div>
+    <div class="macro-card"><span class="top-emoji">🍚</span><div class="macro-num" id="m-carb">~185<span style="font-size:16px">g</span></div><div class="macro-unit">&nbsp;</div><div class="macro-name">Carbs</div></div>
+    <div class="macro-card"><span class="top-emoji">🥑</span><div class="macro-num" id="m-fat">~58<span style="font-size:16px">g</span></div><div class="macro-unit">&nbsp;</div><div class="macro-name">Fat</div></div>
+  </div>
+
+  <!-- RUNNING TOTALS BAR -->
+  <div class="totals-bar">
+    <div class="totals-bar-title">📊 Today's Meal Total</div>
+    <div class="totals-nums">
+      <div class="total-item"><div class="total-val" id="tot-kcal">0</div><div class="total-lbl">kcal</div></div>
+      <div class="total-item"><div class="total-val" id="tot-prot">0g</div><div class="total-lbl">protein</div></div>
+      <div class="total-item"><div class="total-val" id="tot-carb">0g</div><div class="total-lbl">carbs</div></div>
+      <div class="total-item"><div class="total-val" id="tot-fat">0g</div><div class="total-lbl">fat</div></div>
+    </div>
+    <div id="totals-status" class="totals-status status-ok">✅ On track!</div>
+  </div>
+
+  <!-- EDITABLE MEALS -->
+  <div id="meals-container"></div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     PROGRESS TAB
+══════════════════════════════════════════ -->
+<div id="tab-progress" class="tab-panel">
+  <div class="section-header">
+    <div class="section-title"><span class="emoji">📈</span>Track Your Journey<span class="emoji">🌸</span></div>
+    <div class="section-desc">Log weekly weigh-ins — nutrition targets update automatically!</div>
+  </div>
+
+  <div class="log-form">
+    <div class="form-group"><label>📅 Date</label><input type="date" id="log-date"></div>
+    <div class="form-group" style="max-width:130px;"><label>⚖️ Weight (lbs)</label><input type="number" id="log-weight" placeholder="175" step="0.1"></div>
+    <div class="form-group"><label>💭 Note</label><input type="text" id="log-note" placeholder="felt amazing today!"></div>
+    <button class="btn-log" onclick="addLog()">Log it 🌸</button>
+  </div>
+
+  <div class="log-entries" id="log-entries">
+    <div class="empty-state" id="log-empty">
+      <span class="big">🌱</span>
+      Log your first weigh-in above to start tracking your glow-up ✨
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TIPS TAB
+══════════════════════════════════════════ -->
+<div id="tab-tips" class="tab-panel">
+  <div class="section-header">
+    <div class="section-title"><span class="emoji">💡</span>Tips & Reminders<span class="emoji">🌺</span></div>
+    <div class="section-desc">Little things that make a big difference 💕</div>
+  </div>
+  <div class="tip-card"><div class="tip-emoji">💊</div><div><div class="tip-title">Retatrutide: protect your muscle!</div><div class="tip-body">GLP-1 triple agonists are powerful for fat loss but can cause muscle loss if protein intake drops too low. Hitting your protein target every single day is non-negotiable. Even on low-appetite days, prioritize a protein shake if you can't eat a full meal.</div></div></div>
+  <div class="tip-card"><div class="tip-emoji">💧</div><div><div class="tip-title">Hydration is extra important on retatrutide</div><div class="tip-body">Retatrutide can blunt your thirst sensation. Set phone reminders to drink water throughout the day. Aim for at least 3L — more on gym days. Dehydration will tank your energy and gym performance fast.</div></div></div>
+  <div class="tip-card"><div class="tip-emoji">🏃‍♀️</div><div><div class="tip-title">Cardio: steady state beats HIIT right now</div><div class="tip-body">While on a GLP-1 medication, fasted low-intensity cardio (walking, cycling at 60–70% max HR) is your fat-loss sweet spot. HIIT is great but keep it to once per week max — your recovery capacity may be lower with reduced calorie intake.</div></div></div>
+  <div class="tip-card"><div class="tip-emoji">📸</div><div><div class="tip-title">The scale is a liar — take progress photos!</div><div class="tip-body">During recomp, you lose fat AND gain muscle simultaneously, so the scale may barely move while your body transforms completely. Take photos every 4 weeks and measure your waist — that's the real story ☕</div></div></div>
+  <div class="tip-card"><div class="tip-emoji">🛁</div><div><div class="tip-title">Don't skip warm-up & cool-down</div><div class="tip-body">These are where adaptation actually happens. Five minutes either side of your workout is a tiny investment with a huge return — fewer injuries, better recovery, faster results.</div></div></div>
+  <div class="tip-card"><div class="tip-emoji">🌷</div><div><div class="tip-title">Consistency > perfection, every time</div><div class="tip-body">Missed a workout? Don't double up — just pick up where you left off. One missed session changes almost nothing. Skipping every session changes everything. Show up even on the hard days 💪</div></div></div>
+  <div class="tip-card"><div class="tip-emoji">💪</div><div><div class="tip-title">Week 4–6: don't quit!</div><div class="tip-body">The new-gym excitement fades but visible results haven't fully arrived yet. This is the critical window. Every girl who pushed through this phase is the one who actually glowed up. Trust the process 🌸</div></div></div>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// ══════════════════════════════════════════
+// WORKOUT DATA
+// ══════════════════════════════════════════
+const workouts = {
+  mon:[
+    {name:'Barbell Bench Press',       muscle:'Chest',          sets:3,reps:'8–10',   rest:'90s'},
+    {name:'Incline Dumbbell Press',    muscle:'Upper Chest',    sets:3,reps:'10–12',  rest:'75s'},
+    {name:'Cable Chest Fly',           muscle:'Chest',          sets:3,reps:'12–15',  rest:'60s'},
+    {name:'Overhead Press (BB or DB)', muscle:'Shoulders',      sets:3,reps:'8–10',   rest:'90s'},
+    {name:'Lateral Raises',            muscle:'Side Delts',     sets:3,reps:'15–20',  rest:'60s'},
+    {name:'Tricep Rope Pushdown',      muscle:'Triceps',        sets:3,reps:'12–15',  rest:'60s'},
+  ],
+  tue:[
+    {name:'Treadmill Walk/Jog Warmup', muscle:'5 min',          sets:'-',reps:'Warm-up',  rest:'Fat Burn 🔥'},
+    {name:'Incline Treadmill Walk',    muscle:'15 min',         sets:'-',reps:'Brisk pace',rest:'Fat Burn 🔥'},
+    {name:'Cycling Intervals',         muscle:'15 min',         sets:'5×',reps:'1 min hard / 2 min easy',rest:'Cardio ❤️'},
+    {name:'Rowing Machine Cooldown',   muscle:'5 min',          sets:'-',reps:'Easy pace',rest:'Fat Burn 🔥'},
+  ],
+  wed:[
+    {name:'Barbell Row',               muscle:'Back',           sets:3,reps:'8–10',   rest:'90s'},
+    {name:'Lat Pulldown',              muscle:'Lats',           sets:3,reps:'10–12',  rest:'75s'},
+    {name:'Seated Cable Row',          muscle:'Mid Back',       sets:3,reps:'10–12',  rest:'75s'},
+    {name:'Dumbbell Rear Delt Fly',    muscle:'Rear Delts',     sets:3,reps:'15–20',  rest:'60s'},
+    {name:'EZ Bar Curl',               muscle:'Biceps',         sets:3,reps:'10–12',  rest:'60s'},
+    {name:'Hammer Curl',               muscle:'Brachialis',     sets:3,reps:'12–15',  rest:'60s'},
+  ],
+  fri:[
+    {name:'Barbell Back Squat',        muscle:'Quads / Glutes', sets:4,reps:'6–8',    rest:'2 min'},
+    {name:'Romanian Deadlift',         muscle:'Hamstrings',     sets:3,reps:'10–12',  rest:'90s'},
+    {name:'Leg Press',                 muscle:'Quads',          sets:3,reps:'12–15',  rest:'90s'},
+    {name:'Leg Curl (Machine)',        muscle:'Hamstrings',     sets:3,reps:'12–15',  rest:'60s'},
+    {name:'Walking Lunges',            muscle:'Quads / Glutes', sets:3,reps:'10 each',rest:'75s'},
+    {name:'Standing Calf Raise',       muscle:'Calves',         sets:4,reps:'15–20',  rest:'45s'},
+  ],
+  sat:[
+    {name:'Deadlift',                  muscle:'Back / Legs',    sets:3,reps:'5–6',    rest:'2 min'},
+    {name:'Pull-Ups / Assisted',       muscle:'Back / Biceps',  sets:3,reps:'6–10',   rest:'90s'},
+    {name:'Dumbbell Push Press',       muscle:'Shoulders',      sets:3,reps:'10–12',  rest:'75s'},
+    {name:'Plank',                     muscle:'Core',           sets:3,reps:'40–60s', rest:'45s'},
+    {name:'Ab Wheel Rollout',          muscle:'Core',           sets:3,reps:'8–12',   rest:'60s'},
+    {name:'Stairmaster',               muscle:'Glutes / Cardio',sets:'-',reps:'10 min',rest:'Cardio ❤️'},
+    {name:'Treadmill Cooldown Walk',   muscle:'5 min',          sets:'-',reps:'Easy', rest:'Fat Burn 🔥'},
+  ],
+  sun:[
+    {name:'Outdoor Walk or Treadmill', muscle:'20 min',         sets:'-',reps:'Easy pace',rest:'Fat Burn 🔥'},
+    {name:'Stationary Bike',           muscle:'20 min',         sets:'-',reps:'Low resistance',rest:'Fat Burn 🔥'},
+    {name:'Stretching / Foam Roll',    muscle:'5 min',          sets:'-',reps:'Full body',rest:'Recovery 🌿'},
+  ],
+};
+
+const checked={mon:{},tue:{},wed:{},fri:{},sat:{},sun:{}};
+
+function renderList(day){
+  const list=document.getElementById('list-'+day);
+  list.innerHTML='';
+  workouts[day].forEach((ex,i)=>{
+    const row=document.createElement('div');
+    row.className='exercise-row';
+    row.innerHTML=`
+      <div class="ex-check${checked[day][i]?' done':''}" onclick="toggleCheck('${day}',${i})"></div>
+      <div><div class="ex-name">${ex.name}</div><div class="ex-muscle">${ex.muscle}</div></div>
+      <div class="ex-sets">${ex.sets}</div>
+      <div class="ex-reps">${ex.reps}</div>
+      <div class="ex-rest">${ex.rest}</div>`;
+    list.appendChild(row);
+  });
+  updateProgress(day);
+}
+function toggleCheck(day,idx){checked[day][idx]=!checked[day][idx];renderList(day);}
+function updateProgress(day){
+  const total=workouts[day].length;
+  const done=Object.values(checked[day]).filter(Boolean).length;
+  document.getElementById('prog-'+day).style.width=Math.round((done/total)*100)+'%';
+  const emoji=done===total?' 🎉':(['tue','sun'].includes(day)?' 💚':' 🌸');
+  document.getElementById('prog-label-'+day).textContent=`${done} / ${total} done${emoji}`;
+}
+
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  if(btn) btn.classList.add('active');
+}
+const allDayPills=document.querySelectorAll('.day-pill:not(.rest)');
+function selectDay(el,id){
+  allDayPills.forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  ['day-mon','day-tue','day-wed','day-fri','day-sat','day-sun'].forEach(d=>{
+    document.getElementById(d).style.display='none';
+  });
+  document.getElementById(id).style.display='block';
+}
+
+// ══════════════════════════════════════════
+// NUTRITION ENGINE
+// ══════════════════════════════════════════
+// Retatrutide adjustments:
+//   - Calorie deficit multiplier: 0.85 (15% reduction from TDEE)
+//   - Protein: 0.85g per lb bodyweight (higher to preserve muscle)
+//   - Fat: 25% of adjusted calories
+//   - Carbs: remainder
+const RETA_CAL_FACTOR = 0.85;
+const PROT_PER_LB     = 0.85;
+
+let currentTargets = {kcal:1900, prot:150, carb:185, fat:58};
+
+function recalcNutrition(){
+  const wEl = document.getElementById('nutr-weight');
+  const aEl = document.getElementById('nutr-activity');
+  const w = parseFloat(wEl ? wEl.value : 0);
+  const a = parseFloat(aEl ? aEl.value : 1.55);
+  if(!w || w<80 || w>500) return;
+
+  // Mifflin-St Jeor (female assumed, using weight in kg, height 165cm, age 30 as defaults)
+  const wKg = w * 0.453592;
+  const bmr = 10*wKg + 6.25*165 - 5*30 - 161;
+  const tdee = bmr * a;
+  const adjKcal = Math.round(tdee * RETA_CAL_FACTOR / 10) * 10;
+  const prot = Math.round(w * PROT_PER_LB);
+  const fat  = Math.round(adjKcal * 0.25 / 9);
+  const carb = Math.round((adjKcal - prot*4 - fat*9) / 4);
+
+  currentTargets = {kcal:adjKcal, prot, carb:Math.max(carb,80), fat};
+
+  // Update macro display
+  document.getElementById('m-kcal').textContent='~'+adjKcal;
+  document.getElementById('m-prot').innerHTML='~'+prot+'<span style="font-size:16px">g</span>';
+  document.getElementById('m-carb').innerHTML='~'+Math.max(carb,80)+'<span style="font-size:16px">g</span>';
+  document.getElementById('m-fat').innerHTML ='~'+fat+'<span style="font-size:16px">g</span>';
+
+  // Hero
+  document.getElementById('hero-calories').textContent='~'+adjKcal;
+  document.getElementById('hero-weight-display').textContent=w+' lbs';
+
+  // Calc result panel
+  const cr=document.getElementById('calc-result');
+  cr.style.display='flex';
+  document.getElementById('calc-kcal').textContent=adjKcal;
+  document.getElementById('calc-prot').textContent=prot+'g';
+  document.getElementById('calc-carb').textContent=Math.max(carb,80)+'g';
+  document.getElementById('calc-fat').textContent=fat+'g';
+  document.getElementById('calc-note').textContent=
+    `Based on ${w} lbs · TDEE ~${Math.round(tdee)} kcal · −15% retatrutide adjustment · 0.85g protein/lb`;
+
+  // Sync to nutrition weight field too
+  if(document.getElementById('nutr-weight') && wEl !== document.getElementById('nutr-weight')){
+    document.getElementById('nutr-weight').value=w;
+  }
+
+  recalcTotals();
+}
+
+// ══════════════════════════════════════════
+// EDITABLE MEAL PLAN
+// ══════════════════════════════════════════
+const defaultMeals = [
+  {
+    emoji:'☀️', title:'Breakfast · ~7am',
+    items:[
+      {food:'4-egg omelette w/ spinach & feta', kcal:350, prot:28, carb:4,  fat:24},
+      {food:'Oats (1 cup) with berries',         kcal:200, prot:7,  carb:40, fat:3},
+    ]
+  },
+  {
+    emoji:'🌿', title:'Lunch · ~12pm',
+    items:[
+      {food:'Grilled chicken breast (6 oz)',     kcal:280, prot:52, carb:0,  fat:6},
+      {food:'Brown rice (1 cup cooked)',          kcal:215, prot:5,  carb:45, fat:2},
+      {food:'Mixed greens + olive oil & lemon',  kcal:80,  prot:1,  carb:4,  fat:7},
+    ]
+  },
+  {
+    emoji:'🍌', title:'Pre-Workout Snack · ~3pm',
+    items:[
+      {food:'Greek yogurt (1 cup)',              kcal:130, prot:18, carb:9,  fat:0},
+      {food:'Banana',                            kcal:90,  prot:1,  carb:23, fat:0},
+    ]
+  },
+  {
+    emoji:'🌙', title:'Dinner · ~7pm',
+    items:[
+      {food:'Salmon fillet (6 oz)',              kcal:310, prot:42, carb:0,  fat:15},
+      {food:'Roasted sweet potato (medium)',     kcal:130, prot:2,  carb:30, fat:0},
+      {food:'Steamed broccoli (1 cup)',          kcal:55,  prot:4,  carb:11, fat:0},
+    ]
+  },
+];
+
+function renderMeals(){
+  const c=document.getElementById('meals-container');
+  c.innerHTML='';
+  defaultMeals.forEach((meal,mi)=>{
+    const mc=document.createElement('div');
+    mc.className='meal-card';
+    mc.id='meal-'+mi;
+    const {kcal,prot,carb,fat}=mealTotals(mi);
+    mc.innerHTML=`
+      <div class="meal-card-header" onclick="toggleMeal(${mi})">
+        <div class="meal-header-left">
+          <span class="meal-emoji-big">${meal.emoji}</span>
+          <div>
+            <div class="meal-title">${meal.title}</div>
+            <div class="meal-quick-macros" id="meal-macros-${mi}">${kcal} kcal · ${prot}g protein · ${carb}g carbs · ${fat}g fat</div>
+          </div>
+        </div>
+        <button class="meal-toggle-btn" id="meal-toggle-${mi}">▾</button>
+      </div>
+      <div class="meal-body" id="meal-body-${mi}" style="display:none;">
+        <div style="display:grid;grid-template-columns:1fr 60px 60px 60px 60px 28px;gap:6px;margin-bottom:6px;padding:0 2px;">
+          <div class="food-col-label">Food</div>
+          <div class="food-col-label">kcal</div>
+          <div class="food-col-label">Prot g</div>
+          <div class="food-col-label">Carb g</div>
+          <div class="food-col-label">Fat g</div>
+          <div></div>
+        </div>
+        <div class="food-items-list" id="food-list-${mi}"></div>
+        <button class="btn-add-food" onclick="addFood(${mi})">＋ Add food</button>
+      </div>`;
+    c.appendChild(mc);
+    renderFoodItems(mi);
+  });
+  recalcTotals();
+}
+
+function renderFoodItems(mi){
+  const list=document.getElementById('food-list-'+mi);
+  if(!list) return;
+  list.innerHTML='';
+  defaultMeals[mi].items.forEach((item,fi)=>{
+    const row=document.createElement('div');
+    row.className='food-item-row';
+    row.innerHTML=`
+      <input type="text" value="${item.food}" oninput="updateFood(${mi},${fi},'food',this.value)" placeholder="Food name">
+      <input type="number" value="${item.kcal}" oninput="updateFood(${mi},${fi},'kcal',+this.value)" min="0">
+      <input type="number" value="${item.prot}" oninput="updateFood(${mi},${fi},'prot',+this.value)" min="0">
+      <input type="number" value="${item.carb}" oninput="updateFood(${mi},${fi},'carb',+this.value)" min="0">
+      <input type="number" value="${item.fat}"  oninput="updateFood(${mi},${fi},'fat', +this.value)" min="0">
+      <button class="btn-remove-food" onclick="removeFood(${mi},${fi})">✕</button>`;
+    list.appendChild(row);
+  });
+}
+
+function updateFood(mi,fi,field,val){
+  defaultMeals[mi].items[fi][field]=val;
+  refreshMealMacros(mi);
+  recalcTotals();
+}
+function addFood(mi){
+  defaultMeals[mi].items.push({food:'New food',kcal:0,prot:0,carb:0,fat:0});
+  renderFoodItems(mi);
+  refreshMealMacros(mi);
+  recalcTotals();
+}
+function removeFood(mi,fi){
+  defaultMeals[mi].items.splice(fi,1);
+  renderFoodItems(mi);
+  refreshMealMacros(mi);
+  recalcTotals();
+}
+function mealTotals(mi){
+  return defaultMeals[mi].items.reduce((a,it)=>({
+    kcal:a.kcal+(+it.kcal||0), prot:a.prot+(+it.prot||0),
+    carb:a.carb+(+it.carb||0), fat:a.fat+(+it.fat||0)
+  }),{kcal:0,prot:0,carb:0,fat:0});
+}
+function refreshMealMacros(mi){
+  const {kcal,prot,carb,fat}=mealTotals(mi);
+  const el=document.getElementById('meal-macros-'+mi);
+  if(el) el.textContent=`${kcal} kcal · ${prot}g protein · ${carb}g carbs · ${fat}g fat`;
+}
+function toggleMeal(mi){
+  const body=document.getElementById('meal-body-'+mi);
+  const btn=document.getElementById('meal-toggle-'+mi);
+  const open=body.style.display==='none';
+  body.style.display=open?'block':'none';
+  btn.classList.toggle('open',open);
+}
+
+function recalcTotals(){
+  let kcal=0,prot=0,carb=0,fat=0;
+  defaultMeals.forEach((_,mi)=>{
+    const t=mealTotals(mi);
+    kcal+=t.kcal; prot+=t.prot; carb+=t.carb; fat+=t.fat;
+  });
+  document.getElementById('tot-kcal').textContent=kcal;
+  document.getElementById('tot-prot').textContent=prot+'g';
+  document.getElementById('tot-carb').textContent=carb+'g';
+  document.getElementById('tot-fat').textContent=fat+'g';
+
+  const tk=currentTargets.kcal, tp=currentTargets.prot;
+  const statusEl=document.getElementById('totals-status');
+  const kcalDiff=kcal-tk, protDiff=prot-tp;
+  if(protDiff < -20){
+    statusEl.className='totals-status status-low';
+    statusEl.textContent=`⚠️ ${Math.abs(protDiff)}g protein short — prioritize protein!`;
+  } else if(kcalDiff > 150){
+    statusEl.className='totals-status status-high';
+    statusEl.textContent=`↑ ${kcalDiff} kcal over target`;
+  } else if(kcalDiff < -250){
+    statusEl.className='totals-status status-low';
+    statusEl.textContent=`↓ ${Math.abs(kcalDiff)} kcal under — eat more protein!`;
+  } else {
+    statusEl.className='totals-status status-ok';
+    statusEl.textContent='✅ On track! Keep it up 🌸';
+  }
+}
+
+// ══════════════════════════════════════════
+// PROGRESS LOG
+// ══════════════════════════════════════════
+const logs=[];
+function addLog(){
+  const date  = document.getElementById('log-date').value;
+  const weight= document.getElementById('log-weight').value;
+  const note  = document.getElementById('log-note').value;
+  if(!date||!weight) return;
+  logs.push({date, weight:parseFloat(weight), note});
+  logs.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  renderLogs();
+  // Update nutrition weight to most recent
+  const latest=logs[0].weight;
+  document.getElementById('nutr-weight').value=latest;
+  document.getElementById('hero-weight-display').textContent=latest+' lbs';
+  recalcNutrition();
+  document.getElementById('log-weight').value='';
+  document.getElementById('log-note').value='';
+}
+
+function deleteLog(idx){
+  logs.splice(idx,1);
+  renderLogs();
+  if(logs.length>0){
+    document.getElementById('nutr-weight').value=logs[0].weight;
+    recalcNutrition();
+  }
+}
+
+function renderLogs(){
+  const container=document.getElementById('log-entries');
+  const empty=document.getElementById('log-empty');
+  if(logs.length===0){container.innerHTML='';container.appendChild(empty);empty.style.display='';return;}
+  empty.style.display='none';
+  container.innerHTML='';
+  logs.forEach((l,i)=>{
+    const el=document.createElement('div');
+    el.className='log-entry';
+    const d=new Date(l.date+'T00:00:00');
+    const label=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+    let changeBadge='';
+    if(i<logs.length-1){
+      const diff=(l.weight-logs[i+1].weight).toFixed(1);
+      const cls=diff<=0?'change-down':'change-up';
+      const sign=diff<=0?'':'＋';
+      changeBadge=`<span class="log-entry-change ${cls}">${sign}${diff} lbs</span>`;
+    }
+    el.innerHTML=`
+      <div>
+        <div class="log-entry-date">${label}</div>
+        ${l.note?`<div class="log-entry-note">${l.note} 💕</div>`:''}
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        ${changeBadge}
+        <div class="log-entry-weight">${l.weight} lbs</div>
+        <button class="log-entry-del" onclick="deleteLog(${i})" title="Delete">✕</button>
+      </div>`;
+    container.appendChild(el);
+  });
+}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+['mon','tue','wed','fri','sat','sun'].forEach(renderList);
+renderMeals();
+document.getElementById('log-date').valueAsDate=new Date();
+</script>
+</body>
+</html>
 
